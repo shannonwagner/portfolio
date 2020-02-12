@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Terre Glaciale</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Un jeu de rôle Cryopunk au système léger
+avec une création de personnage très rapide,
+parfait pour les one-shot ! Jeu créée lors de la GameJam 2020 par Louis-Barthélémy Schatz sur Montpellier">
+<link rel="stylesheet" href="assets/css/index.css">
+	<link href="https://fonts.googleapis.com/css?family=Orbitron&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+</head>
+<body>
+        <!--SECTION PRÉSENTATION-->
+    <div class="background-presentation">
+        <section class="wrapper presentation">
+            <a href="index.html"><img class="logo" src="assets/img/logo-terre-glaciale.png" alt="logo-site"></a>
+            <a href="index.html"><img class="logo-version-mobile" src="assets/img/logo-terre-glaciale-version-mobile.png" alt="logo-site"></a>
+            <h2>Un jeu de rôle Cryopunk au système léger<br> avec une création de personnage très rapide,<br> parfait pour les one-shot !</h2>
+            <p>Seriez-vous prêts à accepter les tâches les plus dangereuses ?</p>
+            <a class="cta js-scrollTo" href="#formulaire">Inscrivez-vous</a>
+            </div>
+        </section>
+        <!--fin SECTION PRÉSENTATION-->	
+
+          <!--SECTION HISTOIRE-->
+    <div class="background-histoire">
+        <section class="wrapper histoire">
+            <h3>Histoire</h3>
+            <p>Imaginez un monde où la technologie et les machines dégageaient, non pas de la chaleur, mais du
+froid. Le monde se retrouve au milieu d’une ère glaciaire.<br> L’Humanité s’est recroquevillée dans des
+villes constituées d’une ou plusieurs tours reliées entre elles. Dans ce paradoxe le peuple survit
+dans leurs immenses tours grâce à des machineries qui subviennent à leurs besoins en énergie,
+chaleur, confort bien qu’il soit une notion plutôt sommaire.<br><br> Plus la population utilise la technologie,
+plus elle génère du froid. Ainsi les Tour-Villes se retrouvent complètement isolées au milieu de la
+glace et la neige. Pour passer d’une tour à l’autre, les habitants utilise des passerelles. Mais pour
+voyager d’une ville à une autre, il est plus sûr d’utiliser des aéronefs dont les plateformes se
+situent aux étages supérieurs. La population riche se les réserve car plus chaude. Alors que les
+classes les plus laborieuses se contentent des étages inférieurs.<br><br>
+Vous jouerez une équipe de RIP, des personnes n&#39;ayant pas peur du froid mortel et ses dangers,
+payé pour les tâches les plus spécialisées et dangereuses. L&#39;étendu des tâches confiées sont
+nombreuses, autant enquêter dans les Tour-Villes que devoir sortir dans l’extérieur mortel. Même
+si le nom RIP a l’air d&#39;être une blague plutôt morbide sur la dangerosité du métier, il n’en n’est rien
+car c’est une déformation du nom d’un ancien métier, les Repairs. Les Repairs s&#39;occupaient des
+problèmes techniques, mécaniques et électronique les plus dangereuses des tours. Mais avec le
+temps leurs tâches se sont étendues et leur nom raccourci.</p>
+            </div>
+        </section>
+        <!--fin SECTION HISTOIRE-->	
+
+          <!--SECTION FORMULAIRE-->
+    <div class="background-formulaire">
+        <section class="wrapper formulaire" id="formulaire">
+            <h4>Incarnez une équipe de RIP et partez à l'aventure !</h4>
+            <h5>Abonnez-vous à la newsletter pour obtenir plus d'infos sur sa prochaine sortie !</h5>
+            <div class="conteneur-form">
+    <form class="conteneur-form-formulaire" id ="formulaire" action="javascript:envoiForm()">
+  <input class="barre-formulaire" type="text" id="lastname" placeholder="Nom">
+  <br>
+  <br>
+  <input class="barre-formulaire" type="text" id="firstname" placeholder="Prénom">
+  <br><br>
+   <input class="barre-formulaire" type="text" id="mail" placeholder="Email">
+  <input class="bouton" type="submit" value="Inscrivez-vous">
+</form> 
+            </div>
+        </section>
+        <!--fin SECTION FORMULAIRE-->
+
+<!--SECTION FOOTER-->
+        <footer>
+  <a href="mentions-legales.html"><p> Mentions Légales</p></a>
+  <p>Terre Glaciale | 2020 © Tous droits réservés</p>
+</footer>
+<!--fin SECTION FOOTER-->
+
+<!--Validation mails-->
+         <script type="text/javascript">
+      async function envoiForm(){
+        fetch("https://jdrsangta.herokuapp.com/user", {
+        method: "post",
+        mode: "cors",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+        body: JSON.stringify({
+          mail: document.getElementById("mail").value,
+          firstname: document.getElementById("firstname").value,
+          lastname: document.getElementById("lastname").value
+        })
+      })
+      .then( (response) => { 
+        alert("Vous êtes bien inscrit!")
+         //ici tu peux faire une redirection ou bien afficher un message pour dire que la personne s'est bien enregistrée
+      });
+      }
+
+    </script>
+    <!--Validation mails-->
+
+        <!--JS-Smooth scrolling-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.js-scrollTo').on('click', function() { // Au clic sur un élément
+            var page = $(this).attr('href'); // Page cible
+            var speed = 750; // Durée de l'animation (en ms)
+            $('html, body').animate( { scrollTop: $(page).offset().top }, speed ); // Go
+            return false;
+        });
+    });
+</script>	
+</body>
+</html>
